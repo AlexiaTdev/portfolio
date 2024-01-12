@@ -1,4 +1,5 @@
-import React, { Component, useState, useEffect, useLayoutEffect } from 'react'
+import React, { Component, useState, useEffect } from 'react'
+import Aircraft from './Aircraft';
 
 function getWindowDimensions() {
     const { innerWidth: width, innerHeight: height } = window;
@@ -22,30 +23,13 @@ function getWindowDimensions() {
   
     return windowDimensions;
   }
-/**
- * first
- *  function useWindowPosition() {
-    const [scrollPosition, setPosition] = useState(0);
-    useLayoutEffect(() => {
-      function updatePosition() {
-        setPosition(window.scrollY);
-      }
-      window.addEventListener('scroll', updatePosition);
-      updatePosition();
-      return () => window.removeEventListener('scroll', updatePosition);
-    }, []);
-    return scrollPosition;
-  }
- */
 
 
 export default class Accueil extends Component {
 
   render() {
-    //const {width, height} = useWindowDimensions();
     const Component = () => {
         const { height, width } = useWindowDimensions();
-        //const { yposition } = useWindowPosition();
         const [scrollPosition, setScrollPosition] = useState(0);
   
     useEffect(() => {
@@ -66,20 +50,16 @@ export default class Accueil extends Component {
           <div>
             <p>width: {width} ~ height: {height}</p>
             <p>yposition : {scrollPosition}</p>
+            <Aircraft scrollPosition={scrollPosition} pageWidth={width} pageHeight={height}/>
           </div>
         );
       }
+    
     return (
       <div>accueil HELLO
         <Component />
-        
       </div>
     )
   }
 }
 
-/**
- * first
- * <p>height, {height}</p>
-        <p>width, {width}</p>
- */
